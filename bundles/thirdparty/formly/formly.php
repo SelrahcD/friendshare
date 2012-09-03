@@ -75,7 +75,7 @@ class Formly
 	/**
 	 * Display inline validation error text
 	 */
-	public $display_inline_errors = false;
+	public $display_inline_errors = true;
 
 	/**
 	 * Class constructor
