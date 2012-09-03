@@ -40,5 +40,11 @@ return array(
 			'location' => 'thirdparty/aware'),
 	'authority' => array('auto' => true,
 						'location' => 'thirdparty/authority'),
+	'formly' => array('location' => 'thirdparty/formly',
+		'autoloads' => array(
+        'map' => array(
+            'Flare\\Formly' => '(:bundle)/formly.php',),
+        	)
+        ),
 
 );
