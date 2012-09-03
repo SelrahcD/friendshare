@@ -36,8 +36,8 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
-	'aware' => array('auto' => true,
-			'location' => 'thirdparty/aware'),
+	'auth' => array('auto' => true),
+	'alert' => array('auto' => true),
 	'authority' => array('auto' => true,
 						'location' => 'thirdparty/authority'),
 	'formly' => array('location' => 'thirdparty/formly',
@@ -46,5 +46,12 @@ return array(
             'Flare\\Formly' => '(:bundle)/formly.php',),
         	)
         ),
-
+	'aware' => array(
+  		'autoloads' => array(
+    		'map' => array(
+      			'Aware' => '(:bundle)/model.php'
+    		),
+    	),
+    	'location' => 'thirdparty/aware',
+	),
 );
