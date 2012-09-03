@@ -9,7 +9,8 @@ class Authority_add_authority_tables {
 			$table->increments('id');
 			$table->string('email');
 			$table->string('password');
-			$table->string('name');
+			$table->string('firstname');
+			$table->string('lastname');
 			$table->timestamps();
 		});
 
