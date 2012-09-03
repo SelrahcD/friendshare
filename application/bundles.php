@@ -36,5 +36,7 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
+	'authority' => array('auto' => 'true',
+						'location' => 'thirdparty/authority'),
 
 );
