@@ -36,7 +36,9 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
-	'authority' => array('auto' => 'true',
+	'aware' => array('auto' => true,
+			'location' => 'thirdparty/aware'),
+	'authority' => array('auto' => true,
 						'location' => 'thirdparty/authority'),
 
 );
