@@ -28,7 +28,7 @@ class Alert {
 	}
 
 	private static function toSession(){
-		Session::put('alerts', static::$alerts);
+		Session::flash('alerts', static::$alerts);
 	}
 
 	public static function render(){
@@ -43,6 +43,10 @@ class Alert {
 		}
 
 		return $res;
+	}
+
+	public static function has_alerts(){
+		return Session::has('alerts');
 	}
 
 
