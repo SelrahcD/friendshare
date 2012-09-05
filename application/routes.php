@@ -34,6 +34,7 @@
 
 Route::get('/', 'dashboard@index');
 Route::controller('account');
+Route::controller('friends');
 
 /*
 |--------------------------------------------------------------------------
