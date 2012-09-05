@@ -22,6 +22,7 @@ Licence CC-BY http://creativecommons.org/licenses/by/3.0/fr/
 */
 
 @import url(http://fonts.googleapis.com/css?family=Oregano);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300);
 
 /* ----------------------------- */
 /* ==colors */
@@ -55,14 +56,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
 /* soft reset */
 html, body, blockquote, ul, ol, form {margin: 0; padding: 0;}
-ul, ol {padding-left: 2em}
 .mreset {margin: 0;}
 .preset {padding: 0;}
+
+.padded-body { padding:10px; }
 
 /* font-sizing for content */
 p, li, td, th, textarea, caption, pre, label, input, button {font-size: 1.4em;}
 li li, li p, td p, th p, li h1, li h2, li h3, li h4, li h5, li h6, select {font-size: 100%;}
-h1, .h1-like {font-size: 5em; } /* 24 pixels */
+h1, .h1-like {font-size: 2.4em; } /* 24 pixels */
 h2, .h2-like {font-size: 2.0em; } /* 20 pixels */
 h3, .h3-like {font-size: 1.8em; } /* 18 pixels */
 h4, .h4-like {font-size: 1.6em; } /* 16 pixels */
@@ -85,8 +87,8 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 p:last-child {margin-bottom: 0;}
 
 /* styling headings */
-h1, .h1-like {font-family:'Oregano'; text-align: center; color:#40C0CB; text-shadow:1px 1px 0px #888; margin-bottom: 0;}
-h2, .h2-like {}
+h1, .h1-like { color:#555; font-family: 'Source Sans Pro', sans-serif; font-weight:300;}
+h2, .h2-like { color:#555; font-family: 'Source Sans Pro', sans-serif; font-weight:300;}
 h3, .h3-like {}
 h4, .h4-like {}
 h5, .h5-like {}
@@ -187,7 +189,7 @@ a img {border: 0;}
 
 /* 1em gutter between elements if parent is .gut */
 .row.gut > * + * {
-    border-left: 1em solid #fff; /* must be color of parent background */
+    border-left: 1em solid #fcf9f5; /* must be color of parent background */
 }
 .line.gut > .left {margin-right: 1em}
 .line.gut > .right {margin-left: 1em}
@@ -254,7 +256,60 @@ a img {border: 0;}
 /* ----------------------------- */
 /* ==header */
 /* ----------------------------- */
+.main-header {
+    background:#fff;
+    border-bottom:1px solid #eee;
+    padding:0;
+}
+.home-link {
+    font-family:'Oregano';
+    text-align: center;
+    color:#555;
+    text-shadow:1px 1px 0 #888;
+    border-bottom: 0;
+    font-size: 2.5em;
+}
 
+.home-link:hover {
+    border-bottom: 0;
+    color:#00a8c6;
+}
+.main-nav {
+    top:9px;
+    position:relative;
+}
+.main-nav ul{
+    list-style:none;
+}
+
+.main-nav li {
+    float:left;
+}
+
+.main-nav a {
+    color:#555;
+    border-bottom: 3px solid #e5e5e5;
+    padding-bottom: 5px;
+    font-size:1.1em;
+    margin-right:1em;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight:300;
+}
+
+main-nav a {
+    font-size:1.1em;
+    margin-right:1em;
+    color:#555;
+    border-bottom: 3px solid #e5e5e5;
+    font-weight:normal;
+    font-family: arial;
+    padding-bottom:5px;
+}
+
+.main-nav a:hover {
+    border-bottom: none;
+    border-bottom: 3px solid #00a8c6;
+}
 /* ----------------------------- */
 /* ==sidebar */
 /* ----------------------------- */
@@ -262,6 +317,19 @@ a img {border: 0;}
 /* ----------------------------- */
 /* ==footer */
 /* ----------------------------- */
+.main-footer {
+    font-size:0.8em;
+    color:#555;
+    bottom:0;
+    width:100%;
+    text-align: center;
+    padding-bottom:3px;
+}
+
+.main-footer a {
+    color:#555;
+    border-bottom: none;
+}
 
 /* ----------------------------- */
 /* ==forms */
@@ -317,18 +385,24 @@ input:focus {
 /* ----------------------------- */
 /* ==main */
 /* ----------------------------- */
-
+.main-content {
+    padding:0 10px;
+}
 .box {
     margin-top: 30px;
     border-bottom: 7px solid #00a8c6;
 }
 
 .box:hover {
-    border-bottom: 7px solid #00d3f9;   
+    border-bottom: 7px solid #40C0CB;   
 }
 
 .box-header {
     border-bottom:1px solid #dadada;
+}
+
+.box-header h1 {
+    font-family:'Oregano'; text-align: center; color:#00a8c6; text-shadow:1px 1px 0px #888; margin-bottom: 0; font-size: 5em;
 }
 
 .box-content section {
@@ -343,12 +417,65 @@ input:focus {
 
 a {
     text-decoration:none;
-    color:#00A8C6;
-    border-bottom:1px dashed #00A8C6;
+    color:#00a8c6;
+    border-bottom:1px dashed #00a8c6;
 }
 
 a:hover {
-    border-bottom:1px solid #00A8C6;
+    border-bottom:1px solid #00a8c6;
+}
+
+a.button {
+    background-color:#00a8c6;
+    color:#fff;
+    padding:6px;
+    font-weight: bold;
+    border-bottom: 2px solid #006e82;
+    text-shadow:0 -1px 0 #888;
+}
+
+a.button:hover {
+    background-color: #40C0CB;
+}
+
+.stat-container > div {
+    border-right:1px solid #dadada;
+}
+
+.stat-container > div:last-child {
+    border:none;
+}
+.stat-number {
+    font-size:3em;
+    display:block;
+}
+
+.stat-number a {
+    color:inherit;
+    border-bottom: none;
+}
+.neutral {
+    color:#00a8c6;
+}
+.negative {
+    color:#ee004f;
+}
+.positive {
+    color:#8FBE00;
+}
+
+.friends-list ul {
+   padding:0;
+   margin:0;
+}
+
+.friends-list li {
+    list-style:none;
+    padding-top:5px;
+    border-bottom:1px solid #eaeaea;
+}
+.friends-list .avatar {
+    margin-right:0.3em;
 }
 /* ----------------------------- */
 /* ==iefix */
