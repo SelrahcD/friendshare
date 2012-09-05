@@ -4,25 +4,26 @@ class Alert {
 
 	private static $alerts = array();
 
-	public static function success($text){
+	public static function success($text, $area = null){
 
-		return static::addAlert($text, 'success');
+		return static::addAlert($text, 'success', $area);
 	}
 
-	public static function error($text){
+	public static function error($text, $area = null){
 
-		return static::addAlert($text, 'error');
+		return static::addAlert($text, 'error', $area);
 	}
 
-	public static function warning($text){
+	public static function warning($text, $area = null){
 
-		return static::addAlert($text, 'warning');
+		return static::addAlert($text, 'warning', $area);
 	}
 
-	private static function addAlert($text, $type = null){
+	private static function addAlert($text, $type = 'normal', $area = null){
 		static::$alerts[] = array(
 			'type' => $type,
-			'text' => $text );
+			'text' => $text,
+			'area' => $area );
 
 		static::toSession();
 	}
@@ -31,12 +32,21 @@ class Alert {
 		Session::flash('alerts', static::$alerts);
 	}
 
-	public static function render(){
-		$alerts = Session::get('alerts');
+	public static function render($area = null){
+		$alerts = Session::get('alerts', array());
+
+		$alertsToDisplay = array();
+		foreach($alerts as $alert){
+			if($alert['area'] == $area){
+				$alertsToDisplay[] = $alert;
+			}
+		}
+
+
 		$res = '';
-		if($alerts){
+		if(sizeof($alertsToDisplay)){
 			$res = '<div class="alert-container">'."\n";
-			foreach($alerts as $alert){
+			foreach($alertsToDisplay as $alert){
 				$res .= '<p class="alert-'.$alert['type'].'">'.$alert['text'].'</p>'."\n";
 			}
 			$res .= '</div>'. "\n";
@@ -45,8 +55,17 @@ class Alert {
 		return $res;
 	}
 
-	public static function has_alerts(){
-		return Session::has('alerts');
+	public static function has_alerts($area = null){
+		$alerts = Session::get('alerts', array());
+
+		$alertsForArea = array();
+		foreach($alerts as $alert){
+			if($alert['area'] == $area){
+				$alertsForArea[] = $alert;
+			}
+		}
+		
+		return sizeof($alertsForArea);
 	}
 
 
