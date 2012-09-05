@@ -12,6 +12,8 @@ class Authority_add_authority_tables {
 			$table->string('firstname');
 			$table->string('lastname');
 			$table->string('image');
+			$table->float('debit');
+			$table->float('credit');
 			$table->timestamps();
 		});
 
