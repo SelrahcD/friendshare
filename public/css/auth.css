@@ -87,8 +87,8 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 p:last-child {margin-bottom: 0;}
 
 /* styling headings */
-h1, .h1-like { color:#555; font-family: 'Source Sans Pro', sans-serif; font-weight:300;}
-h2, .h2-like { color:#555; font-family: 'Source Sans Pro', sans-serif; font-weight:300;}
+h1, .h1-like { color:#555; font-family: 'Source Sans Pro', sans-serif; font-weight:300; margin-bottom:0;}
+h2, .h2-like { color:#555; font-family: 'Source Sans Pro', sans-serif; font-weight:300; margin-bottom:0.2em;}
 h3, .h3-like {}
 h4, .h4-like {}
 h5, .h5-like {}
@@ -474,9 +474,39 @@ a.button:hover {
     padding-top:5px;
     border-bottom:1px solid #eaeaea;
 }
-.friends-list .avatar {
+.avatar {
+
     margin-right:0.3em;
 }
+
+.friends-table {
+    border-spacing: 0;
+    width:100%;
+}
+
+.friends-table tr:hover {
+    background:#f4e9db;
+}
+
+.friends-table td {
+    border-bottom: 1px solid #eaeaea;
+    padding:0.4em;
+}
+
+.friends-table td img {
+    margin:0;
+    margin-bottom:-0.4em;
+}
+
+.small-photo {
+    width:50px;
+}
+
+.friends-table a {
+    border-bottom:0;
+    color:inherit;
+}
+
 /* ----------------------------- */
 /* ==iefix */
 /* ----------------------------- */
