@@ -2,6 +2,8 @@
 
 class User extends Aware {
 
+    public static $timestamps = true;
+
     /**
     * Aware validation rules
     */
@@ -20,6 +22,10 @@ class User extends Aware {
     * @var array
     */
     public static $accessible = array( 'firstname', 'lastname', 'email' );
+
+    /**********************************************************
+     * Image
+     *********************************************************/
 
     public function set_image($image){
 
@@ -50,37 +56,31 @@ class User extends Aware {
     }
 
     public function image($size = 'big'){
-
         if(array_key_exists($size, static::$imageSizes)){
 
             if($this->get_attribute('image') && File::exists('public/avatars/'.static::$imageSizes[$size].'_'.$this->get_attribute('image'))){
 
                    return static::$imageSizes[$size].'_'.$this->get_attribute('image');
             }
-            else static::$imageSizes[$size].'_default.gif';
+            else {
+                return static::$imageSizes[$size].'_default.gif';
+            }
         }
 
         return '100_default.gif';
     }
-
-    /**
-    * Action to perform before saving object on DB
-    * *Hash password
-    * @return boolean True
-    */
-    public function onSave()
-    {
-        /* if there's a new password, hash it */
-        if($this->changed('password'))
-        {
-            $this->password = Hash::make($this->password);
-        }
-
-        return true;
+    
+    /**********************************************************
+     * Friends
+     *********************************************************/
+    public function friends(){
+        return $this->has_many_and_belongs_to('User', 'users_users', 'friend_id')->with('debt');
     }
 
-    public static $timestamps = true;
 
+    /**********************************************************
+     * Role
+     *********************************************************/
     public function roles()
     {
         return $this->has_many_and_belongs_to('Role', 'role_user');
@@ -115,5 +115,25 @@ class User extends Aware {
         }
 
         return false;
+    }
+
+    /**********************************************************
+     * Aware
+     *********************************************************/
+
+    /**
+    * Action to perform before saving object on DB
+    * *Hash password
+    * @return boolean True
+    */
+    public function onSave()
+    {
+        /* if there's a new password, hash it */
+        if($this->changed('password'))
+        {
+            $this->password = Hash::make($this->password);
+        }
+
+        return true;
     }
 }
