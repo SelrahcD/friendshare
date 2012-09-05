@@ -54,4 +54,7 @@ return array(
     	),
     	'location' => 'thirdparty/aware',
 	),
+    'resizer' => array(
+        'location' => 'thirdparty/resizer'
+        ),
 );
