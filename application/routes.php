@@ -32,10 +32,8 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home.index');
-});
+Route::get('/', 'dashboard@index');
+Route::controller('account');
 
 /*
 |--------------------------------------------------------------------------
