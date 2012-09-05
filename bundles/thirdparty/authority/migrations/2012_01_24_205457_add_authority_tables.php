@@ -11,6 +11,7 @@ class Authority_add_authority_tables {
 			$table->string('password');
 			$table->string('firstname');
 			$table->string('lastname');
+			$table->string('image');
 			$table->timestamps();
 		});
 
