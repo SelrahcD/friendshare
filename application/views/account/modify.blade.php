@@ -1,6 +1,6 @@
 <h1>Modifier mon compte</h1>
 <div class"line">
-    <div class="mod w100">
+    <div class="mod">
     {{ Alert::render('invalid_pwd') }}
     {{ $form->open() }}
         <fieldset>
