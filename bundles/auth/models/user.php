@@ -77,6 +77,41 @@ class User extends Aware {
         return $this->has_many_and_belongs_to('User', 'users_users', 'friend_id')->with('debt');
     }
 
+    public function isFriendWith($user){
+        $id = 0;
+        if($user instanceof User){
+            $id = $user->id;
+        }
+        elseif(is_int($user)){
+            $id = $user;
+        }
+        else {
+            throw new UnvalidArgumentException('user must be an int or a user');
+        }
+
+        return DB::table('users_users')->where('user_id', '=', $this->id)->where('friend_id', '=', $id)->count();
+    }
+
+    public function sharedFriendsWith($user){
+        $id = 0;
+        if($user instanceof User){
+            $id = $user->id;
+        }
+        elseif(is_int($user)){
+            $id = $user;
+        }
+        else {
+            throw new UnvalidArgumentException('user must be an int or a user');
+        }
+
+        // User::query()->join('users_users as u1', 'user_id', '=', 'u1.friend_')
+        $res = DB::table('users_users as u1')->join('users_users as u2', 'u1.friend_id', '=', 'u2.friend_id')->select(array('u2.friend_id as u2f', 'u1.friend_id as u1f', 'u1.user_id as u1u','u2.user_id as u2u'))->where('u2.user_id', '=', $id)->where('u1.user_id', '=', $this->id)->get();
+            // . ' AND WHERE `u2.user_id` = '. $id);
+        //select('friend_id')->where('user_id', '=', $this->id)->where_in('friend_id', array(3))
+        //
+        return User::query()->join('users_users as u1', 'users.id', '=', 'u1.friend_id')->join('users_users as u2', 'u1.friend_id', '=', 'u2.friend_id')->where('u2.user_id', '=', $id)->where('u1.user_id', '=', $this->id)->get();
+    }
+
 
     /**********************************************************
      * Role
