@@ -37,6 +37,7 @@ return array(
 
 	'docs' => array('handles' => 'docs'),
 	'auth' => array('auto' => true),
+    'money' => array('auto' => true),
 	'alert' => array('auto' => true),
 	'authority' => array('auto' => true,
 						'location' => 'thirdparty/authority'),
