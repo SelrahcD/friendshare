@@ -7,9 +7,9 @@
 	 ami
 	 @endif</p>
 	</div>
-	<div class="col w200p"><p>Vous devez <span class="stat-number negative">{{ abs(Auth::user()->debit) }}</span></p>
+	<div class="col w200p"><p>Vous devez <span class="stat-number negative">{{ Money::render(Auth::user()->debit) }}</span></p>
 	</div>
-	<div class="col w200p"><p>On vous doit <span class="stat-number positive">{{ abs(Auth::user()->credit) }}</span></p>
+	<div class="col w200p"><p>On vous doit <span class="stat-number positive">{{ Money::render(Auth::user()->credit) }}</span></p>
 	</div>
 </div>
 <div class="line">
@@ -19,13 +19,14 @@
 		<table class="friends-table">
 			@foreach($friends as $friend)
 			<tr>
-				<td class="small-photo"><a href="#">{{ HTML::image('avatars/'. $friend->image('small'), $friend->firstname . ' ' . $friend->lastname .' photo') }}</a></td>
-				<td>
+				<td class="small-photo"><a href="friends/v/{{$friend->id}}">{{ HTML::image('avatars/'. $friend->image('small'), $friend->firstname . ' ' . $friend->lastname .' photo') }}</a></td>
+				<td><a href="friends/v/{{$friend->id}}">
 				@if($friend->pivot->debt >= 0)
-					{{ $friend->firstname }} {{ $friend->lastname }} vous doit <span class="positive">{{ abs($friend->pivot->debt) }}</span>.
+					{{ $friend->firstname }} {{ $friend->lastname }} vous doit <span class="positive">{{ Money::render($friend->pivot->debt) }}</span>.
 				@else
-				Vous devez <span class="negative">{{ abs($friend->pivot->debt) }}</span> à {{ $friend->firstname }} {{ $friend->lastname }}.
+				Vous devez <span class="negative">{{ Money::render($friend->pivot->debt) }}</span> à {{ $friend->firstname }} {{ $friend->lastname }}.
 				@endif
+				</a>
 				</td>
 			</tr>
 			@endforeach
