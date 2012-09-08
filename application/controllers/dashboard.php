@@ -20,7 +20,7 @@ class Dashboard_Controller extends Controller {
 
 		
 		/* Get the five last friends user had interaction with */
-		$friends = $user->friends()->order_by('updated_at', 'desc')->take(5)->get();
+		$friends = $user->friends()->order_by('updated_at', 'desc')->take(3)->get();
 		$this->layout->content->with('friends', $friends);
 
 	}
