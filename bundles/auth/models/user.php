@@ -105,7 +105,7 @@ class User extends Aware {
         }
 
         // User::query()->join('users_users as u1', 'user_id', '=', 'u1.friend_')
-        $res = DB::table('users_users as u1')->join('users_users as u2', 'u1.friend_id', '=', 'u2.friend_id')->select(array('u2.friend_id as u2f', 'u1.friend_id as u1f', 'u1.user_id as u1u','u2.user_id as u2u'))->where('u2.user_id', '=', $id)->where('u1.user_id', '=', $this->id)->get();
+        // $res = DB::table('users_users as u1')->join('users_users as u2', 'u1.friend_id', '=', 'u2.friend_id')->select(array('u2.friend_id as u2f', 'u1.friend_id as u1f', 'u1.user_id as u1u','u2.user_id as u2u'))->where('u2.user_id', '=', $id)->where('u1.user_id', '=', $this->id)->get();
             // . ' AND WHERE `u2.user_id` = '. $id);
         //select('friend_id')->where('user_id', '=', $this->id)->where_in('friend_id', array(3))
         //
